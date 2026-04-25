@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <!-- Основной градиент -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" />
+      <stop offset="50%" stop-color="#764ba2" />
+      <stop offset="100%" stop-color="#f093fb" />
+    </linearGradient>
+    
+    <!-- Градиент для внутреннего круга -->
+    <radialGradient id="innerGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
+    </radialGradient>
+    
+    <!-- Градиент для буквы D -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e0e7ff" />
+    </linearGradient>
+    
+    <!-- Градиент для орбит -->
+    <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
+    </linearGradient>
+    
+    <!-- Фильтр для свечения -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Фильтр для тени -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Анимация вращения -->
+    <animateTransform
+      xlink:href="#orbitalRing1"
+      attributeName="transform"
+      type="rotate"
+      from="0 150 150"
+      to="360 150 150"
+      dur="20s"
+      repeatCount="indefinite"
+    />
+    
+    <animateTransform
+      xlink:href="#orbitalRing2"
+      attributeName="transform"
+      type="rotate"
+      from="360 150 150"
+      to="0 150 150"
+      dur="15s"
+      repeatCount="indefinite"
+    />
+    
+    <animateTransform
+      xlink:href="#orbitalRing3"
+      attributeName="transform"
+      type="rotate"
+      from="0 150 150"
+      to="360 150 150"
+      dur="25s"
+      repeatCount="indefinite"
+    />
+    
+    <!-- Анимация пульсации -->
+    <animate
+      xlink:href="#mainCircle"
+      attributeName="r"
+      values="120;125;120"
+      dur="3s"
+      repeatCount="indefinite"
+    />
+    
+    <!-- Анимация свечения -->
+    <animate
+      xlink:href="#glowCircle"
+      attributeName="opacity"
+      values="0.3;0.7;0.3"
+      dur="2s"
+      repeatCount="indefinite"
+    />
+  </defs>
+  
+  <!-- Фоновый круг с тенью -->
+  <circle cx="150" cy="150" r="130" fill="url(#mainGradient)" filter="url(#shadow)" opacity="0.8"/>
+  
+  <!-- Основной круг -->
+  <circle id="mainCircle" cx="150" cy="150" r="120" fill="url(#mainGradient)" filter="url(#glow)"/>
+  
+  <!-- Внутренний круг с градиентом -->
+  <circle cx="150" cy="150" r="100" fill="url(#innerGradient)"/>
+  
+  <!-- Круг свечения -->
+  <circle id="glowCircle" cx="150" cy="150" r="110" fill="none" stroke="url(#orbitGradient)" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Орбитальные кольца -->
+  <g id="orbitalRing1">
+    <ellipse cx="150" cy="150" rx="140" ry="140" fill="none" stroke="url(#orbitGradient)" stroke-width="1" opacity="0.6"/>
+    <circle cx="150" cy="10" r="3" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <g id="orbitalRing2">
+    <ellipse cx="150" cy="150" rx="160" ry="160" fill="none" stroke="url(#orbitGradient)" stroke-width="1" opacity="0.4"/>
+    <circle cx="310" cy="150" r="2" fill="#ffffff" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <g id="orbitalRing3">
+    <ellipse cx="150" cy="150" rx="180" ry="180" fill="none" stroke="url(#orbitGradient)" stroke-width="1" opacity="0.3"/>
+    <circle cx="150" cy="330" r="2.5" fill="#ffffff" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Декоративные элементы -->
+  <g opacity="0.6">
+    <!-- Звездочки -->
+    <polygon points="50,50 52,58 60,60 52,62 50,70 48,62 40,60 48,58" fill="#ffffff">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="250,80 252,88 260,90 252,92 250,100 248,92 240,90 248,88" fill="#ffffff">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="220,220 222,228 230,230 222,232 220,240 218,232 210,230 218,228" fill="#ffffff">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  
+  <!-- Основная буква D с эффектами -->
+  <g filter="url(#glow)">
+    <!-- Тень буквы -->
+    <text x="152" y="152" font-family="'Segoe UI', Arial, sans-serif" font-size="140" font-weight="900" fill="#000000" text-anchor="middle" dominant-baseline="central" opacity="0.3">D</text>
+    
+    <!-- Основная буква -->
+    <text x="150" y="150" font-family="'Segoe UI', Arial, sans-serif" font-size="140" font-weight="900" fill="url(#textGradient)" text-anchor="middle" dominant-baseline="central">D</text>
+    
+    <!-- Блики на букве -->
+    <text x="148" y="148" font-family="'Segoe UI', Arial, sans-serif" font-size="140" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="central" opacity="0.3">D</text>
+  </g>
+  
+  <!-- Дополнительные декоративные линии -->
+  <g opacity="0.4">
+    <path d="M 30 150 Q 75 100 150 100 Q 225 100 270 150" fill="none" stroke="url(#orbitGradient)" stroke-width="1"/>
+    <path d="M 30 150 Q 75 200 150 200 Q 225 200 270 150" fill="none" stroke="url(#orbitGradient)" stroke-width="1"/>
+  </g>
+  
+  <!-- Центральная точка -->
+  <circle cx="150" cy="150" r="3" fill="#ffffff" opacity="0.8">
+    <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>

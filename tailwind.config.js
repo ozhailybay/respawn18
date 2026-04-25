@@ -1,0 +1,360 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      screens: {
+        'xs': '400px',
+        '3xl': '1920px',
+      },
+      colors: {
+        primary: {
+          DEFAULT: '#000000', // Black
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#000000', // Black
+          'dark': '#374151', // Gray-700 for dark mode
+          'lighter': '#6B7280', // Gray-500 for lighter variant
+        },
+        accent: {
+          DEFAULT: '#1F2937', // Gray-800
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+        neutral: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+        dark: {
+          DEFAULT: '#1A1A1A',
+          lighter: '#2D2D2D',
+          border: '#404040',
+          // Full dark scale matching neutral for consistency
+          50: '#F9FAFB', // Technically light, but keeps scale complete
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#2D2D2D', // Map to lighter dark bg
+          900: '#1A1A1A', // Map to default dark bg
+        },
+        success: {
+          DEFAULT: '#10B981',
+          50: '#ECFDF5',
+          100: '#D1FAE5',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
+        },
+        warning: {
+          DEFAULT: '#F59E0B',
+          50: '#FFFBEB',
+          100: '#FEF3C7',
+          500: '#F59E0B',
+          600: '#D97706',
+          700: '#B45309',
+        },
+        error: {
+          DEFAULT: '#EF4444',
+          50: '#FEF2F2',
+          100: '#FEE2E2',
+          500: '#EF4444',
+          600: '#DC2626',
+          700: '#B91C1C',
+        },
+        // Новые градиенты для современного дизайна
+        gradients: {
+          primary: 'linear-gradient(45deg, #0056C7, #0070F3)',
+          accent: 'linear-gradient(45deg, #0070F3, #00A3FF)',
+          success: 'linear-gradient(45deg, #10B981, #34D399)',
+          warning: 'linear-gradient(45deg, #F59E0B, #FBBF24)',
+          error: 'linear-gradient(45deg, #EF4444, #F87171)',
+          purple: 'linear-gradient(45deg, #8B5CF6, #C084FC)',
+          orange: 'linear-gradient(45deg, #F97316, #FB923C)',
+          pink: 'linear-gradient(45deg, #EC4899, #F472B6)',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        mono: ['Orbitron', 'monospace'],
+        futuristic: ['Orbitron', 'monospace'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1.16' }],
+        '6xl': ['3.75rem', { lineHeight: '1.1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
+      },
+      borderRadius: {
+        'sm': '0.375rem',
+        DEFAULT: '0.5rem',
+        'md': '0.625rem',
+        'lg': '0.75rem',
+        'xl': '1rem',
+        '2xl': '1.25rem',
+        '3xl': '1.5rem',
+        '4xl': '2rem',
+        'full': '9999px',
+      },
+      spacing: {
+        'xs': '0.5rem',
+        'sm': '0.75rem',
+        'md': '1rem',
+        'lg': '1.5rem',
+        'xl': '2rem',
+        '2xl': '2.5rem',
+        '3xl': '3rem',
+        'section': '6rem',
+        'card': '1.5rem',
+        'safe-top': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
+      },
+      boxShadow: {
+        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+        'card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        'card-hover': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+        'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
+        'none': 'none',
+        'chat': '0 2px 4px rgba(0, 0, 0, 0.1), 0 12px 28px rgba(0, 0, 0, 0.2)',
+        'chat-dark': '0 2px 4px rgba(0, 0, 0, 0.2), 0 12px 28px rgba(0, 0, 0, 0.4)',
+        // Добавлены новые тени для мобильных элементов
+        'bottom-nav': '0 -5px 15px rgba(0, 0, 0, 0.05)',
+        'mobile-card': '0 2px 10px rgba(0, 0, 0, 0.06)',
+        'mobile-fab': '0 4px 10px rgba(0, 0, 0, 0.15)',
+        'hover-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        'neumorph': '5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff',
+        'neumorph-dark': '5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.05)',
+      },
+      animation: {
+        'fadeInUp': 'fadeInUp 0.5s ease-out forwards',
+        'fadeScale': 'fadeScale 0.3s ease-out forwards',
+        'slideIn': 'slideIn 0.2s ease-out forwards',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'fadeIn': 'fadeIn 0.5s ease-out forwards',
+        'slideInLeft': 'slideInLeft 0.3s ease-out forwards',
+        'slideInRight': 'slideInRight 0.3s ease-out forwards',
+        'spin-slow': 'spin 3s linear infinite',
+        'bounce-slow': 'bounce 3s infinite',
+        // Добавлены новые анимации
+        'float': 'float 3s ease-in-out infinite',
+        'wiggle': 'wiggle 1s ease-in-out infinite',
+        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'zoom': 'zoom 0.5s ease-out forwards',
+        'slideUp': 'slideUp 0.3s ease-out forwards',
+        'slideDown': 'slideDown 0.3s ease-out forwards',
+        'mobileMenuIn': 'mobileMenuIn 0.3s ease-out forwards',
+        'mobileMenuOut': 'mobileMenuOut 0.3s ease-out forwards',
+        // Добавляем анимацию blob
+        'blob': 'blob 7s infinite',
+        'blob-slow': 'blob 10s infinite',
+        'blob-fast': 'blob 5s infinite',
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeScale: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        slideIn: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '.7' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideInLeft: {
+          '0%': { transform: 'translateX(-20px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(20px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        // Добавлены новые кадры анимаций
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        zoom: {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        mobileMenuIn: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        mobileMenuOut: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        // Добавляем анимацию blob
+        blob: {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
+      },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.neutral.700'),
+            '--tw-prose-headings': theme('colors.neutral.900'),
+            '--tw-prose-links': theme('colors.primary.DEFAULT'),
+            '--tw-prose-bold': theme('colors.neutral.900'),
+            '--tw-prose-quotes': theme('colors.neutral.900'),
+            '--tw-prose-code': theme('colors.neutral.900'),
+            '--tw-prose-hr': theme('colors.neutral.200'),
+            '--tw-prose-th-borders': theme('colors.neutral.200'),
+            // Dark mode
+            '--tw-prose-invert-body': theme('colors.neutral.300'),
+            '--tw-prose-invert-headings': theme('colors.white'),
+            '--tw-prose-invert-links': theme('colors.primary.400'), // Use a lighter primary for links in dark mode
+            '--tw-prose-invert-bold': theme('colors.white'),
+            '--tw-prose-invert-quotes': theme('colors.neutral.100'),
+            '--tw-prose-invert-code': theme('colors.white'),
+            '--tw-prose-invert-hr': theme('colors.neutral.700'),
+            '--tw-prose-invert-th-borders': theme('colors.neutral.600'),
+          },
+        },
+      }),
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-diagonal': 'linear-gradient(45deg, var(--tw-gradient-stops))',
+        'mesh-pattern': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'%3E%3Cg fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+        // Новые градиентные фоны - теперь черно-белые
+        'gradient-primary': 'linear-gradient(45deg, #000000, #374151)',
+        'gradient-accent': 'linear-gradient(45deg, #1F2937, #4B5563)',
+        'gradient-success': 'linear-gradient(45deg, #10B981, #34D399)',
+        'gradient-warning': 'linear-gradient(45deg, #F59E0B, #FBBF24)',
+        'gradient-error': 'linear-gradient(45deg, #EF4444, #F87171)',
+        'gradient-purple': 'linear-gradient(45deg, #6B7280, #9CA3AF)',
+        'gradient-orange': 'linear-gradient(45deg, #374151, #4B5563)',
+        'gradient-pink': 'linear-gradient(45deg, #1F2937, #374151)',
+        'gradient-blue-purple': 'linear-gradient(135deg, #000000, #374151)',
+        'gradient-orange-pink': 'linear-gradient(135deg, #4B5563, #1F2937)',
+        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+      },
+      backdropBlur: {
+        xs: '2px',
+        '4xl': '72px',
+        '5xl': '96px',
+      },
+      zIndex: {
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+      },
+      // Добавляем классы для задержки анимации
+      'animation-delay': {
+        '1000': '1s',
+        '2000': '2s',
+        '3000': '3s',
+        '4000': '4s',
+        '5000': '5s',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+    // Добавляем плагин для классов задержки анимации
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.animation-delay-1000': {
+          'animation-delay': '1s',
+        },
+        '.animation-delay-2000': {
+          'animation-delay': '2s',
+        },
+        '.animation-delay-3000': {
+          'animation-delay': '3s',
+        },
+        '.animation-delay-4000': {
+          'animation-delay': '4s',
+        },
+        '.animation-delay-5000': {
+          'animation-delay': '5s',
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
+}; 
