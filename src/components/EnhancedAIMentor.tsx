@@ -51,6 +51,8 @@ interface AIPersonality {
   tone: 'professional' | 'friendly' | 'casual' | 'motivational';
 }
 
+const makeMessageId = (): string => `${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
+
 const EnhancedAIMentor: React.FC = () => {
   const { user, userData } = useAuth();
   
@@ -83,6 +85,7 @@ const EnhancedAIMentor: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const recognitionRef = useRef<any>(null);
+  const hasInitializedWelcomeRef = useRef(false);
   
   // AI Personalities
   const personalities: AIPersonality[] = [
@@ -152,9 +155,13 @@ const EnhancedAIMentor: React.FC = () => {
 
   // Initialize welcome message
   useEffect(() => {
+    // Do not reset the full chat history on profile/personality updates.
+    // This keeps manually typed messages from "disappearing".
+    if (hasInitializedWelcomeRef.current) return;
+
     const welcomeMessage: Message = {
-      id: 'welcome',
-      content: `Привет${userData?.displayName ? `, ${userData.displayName}` : ''}! 👋 
+      id: makeMessageId(),
+      content: `Привет${userData?.displayName ? `, ${userData.displayName}` : ''}! 👋
 
 Я ${currentPersonality.name}, твой AI-карьерный ментор. Я здесь, чтобы помочь тебе:
 
@@ -172,6 +179,7 @@ const EnhancedAIMentor: React.FC = () => {
     };
     
     setMessages([welcomeMessage]);
+    hasInitializedWelcomeRef.current = true;
   }, [userData?.displayName, currentPersonality.name]);
 
   // Auto-scroll to bottom
@@ -218,15 +226,13 @@ const EnhancedAIMentor: React.FC = () => {
   };
 
   // Handle sending a message
-  const handleSendMessage = async (e?: React.FormEvent, questionText?: string) => {
-    if (e) e.preventDefault();
-    
-    const messageText = questionText || input;
+  const sendMessage = async (questionText?: string) => {
+    const messageText = (questionText ?? input).trim();
     if (!messageText.trim() || isLoading) return;
 
     // Create user message
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: makeMessageId(),
       content: messageText,
       sender: 'user',
       timestamp: new Date(),
@@ -296,7 +302,7 @@ const EnhancedAIMentor: React.FC = () => {
       
       // Create AI message
       const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: makeMessageId(),
         content: aiResponseText,
         sender: 'ai',
         timestamp: new Date(),
@@ -321,7 +327,7 @@ const EnhancedAIMentor: React.FC = () => {
       console.error('Error sending message:', error);
       
       const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: makeMessageId(),
         content: 'Произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте еще раз.',
         sender: 'ai',
         timestamp: new Date(),
@@ -334,6 +340,11 @@ const EnhancedAIMentor: React.FC = () => {
       setIsLoading(false);
       setIsTyping(false);
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    void sendMessage();
   };
 
   // Generate follow-up suggestions
@@ -371,7 +382,7 @@ const EnhancedAIMentor: React.FC = () => {
 
   // Handle quick question
   const handleQuickQuestion = (question: string) => {
-    handleSendMessage(undefined, question);
+    void sendMessage(question);
   };
 
   // Clear chat
@@ -719,7 +730,7 @@ const EnhancedAIMentor: React.FC = () => {
 
           {/* Input area */}
           <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-            <form onSubmit={handleSendMessage} className="flex items-end space-x-3">
+            <form onSubmit={handleSubmit} className="flex items-end space-x-3">
               <div className="flex-1 relative">
                 <textarea
                   ref={inputRef}
@@ -732,7 +743,7 @@ const EnhancedAIMentor: React.FC = () => {
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
                       e.preventDefault();
-                      handleSendMessage();
+                      void sendMessage();
                     }
                   }}
                 />
