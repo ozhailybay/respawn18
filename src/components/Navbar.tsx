@@ -10,6 +10,7 @@ const Navbar: React.FC = () => {
     { label: 'Резюме', to: '/resume-generator' },
     { label: 'AI Ментор', to: '/ai-mentor' },
     { label: 'Университеты и Гранты', to: '/jobs' },
+    { label: 'О проекте', to: '/about-project' },
   ];
 
   return (

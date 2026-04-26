@@ -15,6 +15,7 @@ import ProfileNew from './components/ProfileNew';
 import ResumeGenerator from './components/ResumeGenerator';
 import AIMentor from './components/AIMentor';
 import UniversitiesAndGrants from './components/Jobs';
+import AboutProject from './components/AboutProject';
 import ShadowOnboarding from './pages/shadowing/ShadowOnboarding';
 import ShadowSimulate from './pages/shadowing/ShadowSimulate';
 import ShadowResult from './pages/shadowing/ShadowResult';
@@ -46,6 +47,7 @@ const App: React.FC = () => (
                     <Route path="/result" element={<ShadowResult />} />
 
                     <Route path="/jobs" element={<UniversitiesAndGrants />} />
+                    <Route path="/about-project" element={<AboutProject />} />
                     <Route path="/resume-generator" element={<ResumeGenerator />} />
                     <Route path="/ai-mentor" element={<AIMentor />} />
                     <Route path="/profile" element={<ProfileNew />} />
